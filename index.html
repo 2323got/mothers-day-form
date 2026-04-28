@@ -647,5 +647,32 @@
   setInterval(createPetal, 3000);
 })();
 </script>
+
+<!-- 感謝頁面 -->
+<div id="thank-you" style="display:none;position:fixed;inset:0;background:var(--bg);z-index:99999;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px;">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.04) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%, rgba(123,47,255,0.2) 0%, transparent 70%);pointer-events:none;"></div>
+  <div style="position:relative;z-index:1;max-width:480px;">
+    <div style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:5px;color:var(--blue);border:1px solid var(--blue);padding:5px 18px;display:inline-block;margin-bottom:28px;box-shadow:0 0 10px rgba(0,212,255,0.2);">REGISTRATION COMPLETE</div>
+    <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,10vw,72px);letter-spacing:6px;line-height:1.1;margin-bottom:8px;">
+      <span style="color:var(--pink);text-shadow:0 0 24px var(--pink);">感謝</span><br>
+      <span style="color:var(--white);">你的</span><span style="color:var(--blue);text-shadow:0 0 24px var(--blue);">報名</span>
+    </h2>
+    <p style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:3px;margin-bottom:28px;">// REACTION FORCE TRAINING SPACE //</p>
+    <div style="background:rgba(0,212,255,0.05);border:1px solid rgba(0,212,255,0.2);border-left:2px solid var(--blue);border-radius:0 2px 2px 0;padding:18px 20px;margin-bottom:32px;text-align:left;">
+      <p style="font-size:14px;color:rgba(240,234,255,0.75);line-height:1.9;">
+        我們已收到你的報名資料 🎉<br>
+        接下來請<span style="color:var(--blue);font-weight:500;">私訊 LINE 官方帳號</span>告知已填寫，<br>
+        我們會盡快安排<span style="color:var(--pink);font-weight:500;">10天體驗券</span>的領取事宜。
+      </p>
+    </div>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:32px;">
+      <div style="color:var(--pink);border:1px solid var(--pink);background:rgba(255,45,120,0.08);border-radius:2px;padding:7px 16px;font-family:'Share Tech Mono',monospace;font-size:12px;">🎟️ 10天運動體驗券</div>
+      <div style="color:var(--blue);border:1px solid var(--blue);background:rgba(0,212,255,0.08);border-radius:2px;padding:7px 16px;font-family:'Share Tech Mono',monospace;font-size:12px;">🌻 年約加入贈夜纖飲</div>
+    </div>
+    <p style="font-family:'Share Tech Mono',monospace;font-size:11px;color:rgba(122,110,153,0.5);letter-spacing:1px;">活動期限至 2025.05.31 ／ 數量有限</p>
+  </div>
+</div>
+
 </body>
 </html>
