@@ -537,31 +537,29 @@
     });
   }
 
-  document.getElementById('main-form').addEventListener('submit', async function(e) {
+  document.getElementById('main-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
-    btn.disabled = true;
-    btn.textContent = 'SENDING…';
+
+    // 同行者 Email 不能跟填表人相同
     const fd = new FormData(this);
     const data = {};
     fd.forEach((v, k) => data[k] = v);
-
-    // 同行者 Email 不能跟填表人相同
     if (data.companion_email && data.companion_email === data.email) {
       document.getElementById('email-error').style.display = 'block';
-      btn.disabled = false;
-      btn.textContent = '送出報名';
       return;
     }
     document.getElementById('email-error').style.display = 'none';
     data.submitted_at = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+
+    // 背景送出，不等回應
     fetch(GAS_URL, { method: 'POST', body: JSON.stringify(data), mode: 'no-cors' });
+
+    // 直接跳感謝頁面
     localStorage.setItem('mothers_day_submitted', '1');
     const ty = document.getElementById('thank-you');
     ty.style.display = 'flex';
     document.body.style.overflow = 'hidden';
-    this.reset();
-    btn.style.display = 'none';
   });
 </script>
 <style>
