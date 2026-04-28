@@ -555,22 +555,13 @@
     }
     document.getElementById('email-error').style.display = 'none';
     data.submitted_at = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
-    try {
-      await fetch(GAS_URL, { method: 'POST', body: JSON.stringify(data), mode: 'no-cors' });
-      localStorage.setItem('mothers_day_submitted', '1');
-      const ty = document.getElementById('thank-you');
-      ty.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-      this.reset();
-      btn.style.display = 'none';
-    } catch (err) {
-      localStorage.setItem('mothers_day_submitted', '1');
-      const ty = document.getElementById('thank-you');
-      ty.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-      this.reset();
-      btn.style.display = 'none';
-    }
+    fetch(GAS_URL, { method: 'POST', body: JSON.stringify(data), mode: 'no-cors' });
+    localStorage.setItem('mothers_day_submitted', '1');
+    const ty = document.getElementById('thank-you');
+    ty.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    this.reset();
+    btn.style.display = 'none';
   });
 </script>
 <style>
