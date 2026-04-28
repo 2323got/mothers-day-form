@@ -529,22 +529,25 @@
 <script>
   const GAS_URL = 'https://script.google.com/macros/s/AKfycby9Td5p9U85p5bL2JK8eOqdDG_YBKAxsIRtdtb9XjrNcDntIGTLz_vrRd5hoqdC0II/exec';
 
-  // 已填過就直接顯示感謝頁，無法再填
-  if (localStorage.getItem('mothers_day_submitted')) {
-    document.addEventListener('DOMContentLoaded', function() {
-      const ty = document.getElementById('thank-you');
-      if (ty) { ty.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-    });
-  }
+  // 已填過就直接顯示感謝頁
+  try {
+    if (localStorage.getItem('mothers_day_submitted')) {
+      document.addEventListener('DOMContentLoaded', function() {
+        const ty = document.getElementById('thank-you');
+        if (ty) { ty.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+      });
+    }
+  } catch(e) {}
 
+  // 送出表單
   document.getElementById('main-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    const btn = document.getElementById('submit-btn');
 
-    // 同行者 Email 不能跟填表人相同
     const fd = new FormData(this);
     const data = {};
     fd.forEach((v, k) => data[k] = v);
+
+    // 同行者 Email 不能跟填表人相同
     if (data.companion_email && data.companion_email === data.email) {
       document.getElementById('email-error').style.display = 'block';
       return;
@@ -552,11 +555,11 @@
     document.getElementById('email-error').style.display = 'none';
     data.submitted_at = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
 
-    // 背景送出，不等回應
+    // 背景送出
     fetch(GAS_URL, { method: 'POST', body: JSON.stringify(data), mode: 'no-cors' });
 
     // 直接跳感謝頁面
-    localStorage.setItem('mothers_day_submitted', '1');
+    try { localStorage.setItem('mothers_day_submitted', '1'); } catch(e) {}
     const ty = document.getElementById('thank-you');
     ty.style.display = 'flex';
     document.body.style.overflow = 'hidden';
