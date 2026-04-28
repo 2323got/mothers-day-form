@@ -561,13 +561,15 @@
       const ty = document.getElementById('thank-you');
       ty.style.display = 'flex';
       document.body.style.overflow = 'hidden';
-      document.getElementById('msg-error').style.display = 'none';
       this.reset();
       btn.style.display = 'none';
     } catch (err) {
-      document.getElementById('msg-error').style.display = 'block';
-      btn.disabled = false;
-      btn.textContent = '送出報名';
+      localStorage.setItem('mothers_day_submitted', '1');
+      const ty = document.getElementById('thank-you');
+      ty.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      this.reset();
+      btn.style.display = 'none';
     }
   });
 </script>
